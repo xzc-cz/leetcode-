@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var x = prompt('判断回文数');
+        if (x == 0) {
+            alert('true');
+        } else if (x < 0 || x % 10 == 0) {
+            alert('false');
+        }
+        var text = 0;
+        while (x > text) {
+            text = text * 10 + x % 10;
+            x = parseInt(x / 10);
+        }
+        alert(x == text || x == parseInt(text / 10));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

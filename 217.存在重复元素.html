@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var containsDuplicate = function(nums) {
+            // 获取原数组长度
+            let a = nums.length
+                // 通过set来进行数组去重
+            let arr = [...new Set(nums)]
+                //  如果去重后的数组小于原数组则代表有重复的
+            if (arr.length !== a) {
+                return true
+            } else {
+                return false
+            }
+        };
+
+        var text1 = [1, 1, 1, 3, 3, 4, 3, 2, 4, 2];
+        var text2 = [1, 2, 3, 4];
+        console.log(containsDuplicate(text1));
+        console.log(containsDuplicate(text2));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

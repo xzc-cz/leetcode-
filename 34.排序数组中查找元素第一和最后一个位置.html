@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var searchRange = function(nums, target) {
+            const getRigthBorder = (nums, target) => {
+                let left = 0,
+                    right = nums.length - 1;
+                let rightBorder = -2;
+                while (left <= right) {
+                    let mid = left + ((right - left) >> 1);
+                    if (nums[mid] > target) {
+                        right = mid - 1;
+                    } else {
+                        left = mid + 1;
+                        rightBorder = left;
+                    }
+                }
+                return rightBorder
+            }
+            const getLeftBorder = (nums, target) => {
+                let left = 0,
+                    right = nums.length - 1;
+                let leftBorder = -2;
+                while (left <= right) {
+                    let mid = left + ((right - left) >> 1);
+                    if (nums[mid] >= target) {
+                        right = mid - 1;
+                        leftBorder = right;
+                    } else {
+                        left = mid + 1;
+                    }
+                }
+                return leftBorder
+            }
+            let leftBorder = getLeftBorder(nums, target);
+            let rightBorder = getRigthBorder(nums, target);
+
+            if (leftBorder === -2 || rightBorder === -2) {
+                return [-1, -1];
+            }
+            if (rightBorder - leftBorder > 1) {
+                return [leftBorder + 1, rightBorder - 1];
+            }
+            return [-1, -1];
+        };
+
+        var nums = [5, 7, 7, 8, 8, 10],
+            target = 8;
+        console.log(searchRange(nums, target));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

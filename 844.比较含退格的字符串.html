@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 栈
+        var backspaceCompare = function(s, t) {
+            const build = (str) => {
+                let res = [];
+                for (let a of str) {
+                    // 如果为退格键就出栈，否则就出栈
+                    res[a == "#" ? "pop" : "push"](a);
+                }
+                return res.join("");
+            };
+            // 比较经过处理后的俩字符串 s 及 t 是否相同
+            return build(s) == build(t);
+        };
+
+        // 双指针
+        var backspaceCompare = function(s, t) {
+            // 构建简洁有效的字符串
+            let buildAbbr = (s) => {
+                let slow = 0,
+                    fast = 0;
+                // 之所以用split因为字符串是不可变的
+                let arr = s.split("");
+                while (fast < arr.length) {
+                    // 遇到不是#字符的slow往前移一位，slow左边都是有效字符
+                    if (arr[fast] != "#") arr[slow++] = arr[fast];
+                    // 遇到是#，因为题目说明了#是有退格的效果，所以slow--
+                    else if (slow != 0) slow--;
+                    fast++;
+                }
+                // 有效范围为0 到slow，不包含slow(左闭右开区间)
+                arr.length = slow;
+                return arr.join("");
+            };
+            return buildAbbr(s) == buildAbbr(t);
+        };
+
+
+
+        var s = "a#c",
+            t = "b";
+        console.log(backspaceCompare(s, t));
+    </script>
+</body>
+
+</html>

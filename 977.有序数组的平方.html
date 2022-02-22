@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var sortedSquares = function(nums) {
+            let res = [];
+            for (let i = 0, j = nums.length - 1; i <= j;) {
+                const left = Math.abs(nums[i]);
+                const right = Math.abs(nums[j]);
+                if (right > left) {
+                    res.unshift(right * right);
+                    j--;
+                } else {
+                    res.unshift(left * left);
+                    i++;
+                }
+            }
+            return res;
+        };
+
+        var nums = [-7, -3, 2, 3, 11];
+        console.log(sortedSquares(nums));
+    </script>
+</body>
+
+</html>

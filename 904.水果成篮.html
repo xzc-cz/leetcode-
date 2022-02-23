@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var totalFruit = function(fruits) {
+            let l = 0;
+            let maxLen = 0;
+            let n = 0;
+            let arr = [fruits[1]]
+            for (var r = 0; r < fruits.length; r++) {
+                if (!arr.includes(fruits[r])) {
+                    if (arr.length <= 1) {
+                        arr[1] = fruits[r];
+                    } else {
+                        l = n;
+                        arr[0] = fruits[r - 1];
+                        arr[1] = fruits[r];
+                    }
+                }
+                if (fruits[r] !== fruits[n]) {
+                    n = r;
+                }
+                maxLen = Math.max(maxLen, r - l + 1);
+            }
+            return maxLen;
+        };
+
+        var fruits = [0, 1, 2, 2];
+        console.log(totalFruit(fruits));
+    </script>
+</body>
+
+</html>

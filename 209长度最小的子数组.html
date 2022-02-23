@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // var minSubArrayLen = function(target, nums) {
+        //     var result = Infinity;
+        //     var sum = 0;
+        //     for (let i = 0; i < nums.length; i++) {
+        //         sum = 0;
+        //         for (let j = i; j < nums.length; j++) {
+        //             sum += nums[j];
+        //             if (sum >= target && j - i + 1 < result) {
+        //                 result = j - i + 1;
+        //                 break;
+        //             }
+        //         }
+        //     }
+        //     return result == Infinity ? 0 : result;
+        // };
+
+        var minSubArrayLen = function(target, nums) {
+            const len = nums.length;
+            let l = r = sum = 0,
+                res = len + 1;
+            while (r < len) {
+                sum += nums[r++];
+                while (sum >= target) {
+                    res = res < r - l ? res : r - l;
+                    sum -= nums[l++]
+                }
+            }
+            return res > len ? 0 : res;
+        };
+
+        var target = 4,
+            nums = [1, 4, 4];
+        console.log(minSubArrayLen(target, nums));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 先判断是否是环形链表
+        var detectCycle = function(head) {
+            if (!head || !head.next) return null;
+            let slow = head.next,
+                fast = head.next.next;
+            while (fast && fast.next && fast !== slow) {
+                slow = slow.next;
+                fast = fast.next.next;
+            }
+            if (!fast || !fast.next) return null;
+            slow = head;
+            while (fast !== slow) {
+                slow = slow.next;
+                fast = fast.next;
+            }
+            return slow;
+        };
+    </script>
+</body>
+
+</html>
